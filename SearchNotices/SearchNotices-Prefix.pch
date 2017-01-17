@@ -1,0 +1,152 @@
+//
+//  SearchNotices-Prefix.pch
+//  SearchNotices
+//
+//  Created by Jackey on 2016/12/15.
+//  Copyright © 2016年 com.zhouxi. All rights reserved.
+//
+
+#ifndef SearchNotices_Prefix_pch
+#define SearchNotices_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* SearchNotices_Prefix_pch */
+
+#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+
+#define SCREEN_WIDTH                    ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT                   ([UIScreen mainScreen].bounds.size.height)
+
+//读取本地图片
+#define LOADIMAGE(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:ext]]
+//定义UIImage对象
+#define IMAGE(A) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]]
+//定义UIImage对象
+#define ImageNamed(_pointer) [UIImage imageNamed:_pointer]
+//可拉伸的图片
+#define ResizableImage(name,top,left,bottom,right) [[UIImage imageNamed:name] resizableImageWithCapInsets:UIEdgeInsetsMake(top,left,bottom,right)]
+#define ResizableImageWithMode(name,top,left,bottom,right,mode) [[UIImage imageNamed:name] resizableImageWithCapInsets:UIEdgeInsetsMake(top,left,bottom,right) resizingMode:mode]
+
+#define GETSTRING_WITH(x,y) [NSString stringWithFormat:@"%@%@",x,y]
+
+#ifdef DEBUG
+#    define DLog(...) NSLog(__VA_ARGS__)
+#else
+#    define DLog(...)
+#endif
+
+#ifdef DEBUG
+#define LRLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define LRLog(...)
+#endif
+
+#define BackColor [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]
+#define BlueBtnColor [UIColor colorWithRed:0/255.0 green:160/255.0 blue:225/255.0 alpha:1.0]
+
+#define APPLINK @"https://itunes.apple.com/us/app/hu-zhu-xun-ren/id1181454346?l=zh&ls=1&mt=8"
+
+//账号注册
+//@app.route('/backhome/register/v1.0/<username>/<password>', methods=['POST'])
+#define RegisterStringWithoutUserNameAndPassword  @"https://www.zhouxi.net.cn:8000/backhome/register/v1.0/"
+
+//账号登录
+//@app.route('/backhome/login/v1.0/<username>/<password>', methods=['POST'])
+#define LonginStringWithoutUserNameAndPassword @"https://www.zhouxi.net.cn:8000/backhome/login/v1.0/"
+
+//获取昵称
+//@app.route('/backhome/getnicheng/v1.0/<username>', methods=['GET'])
+#define GetNiChengStringWithoutUserName  @"https://www.zhouxi.net.cn:8000/backhome/getnicheng/v1.0/"
+
+//设置昵称
+//@app.route('/backhome/setnicheng/v1.0/<username>/<nicheng>', methods=['POST'])
+#define SetNiChengStringWithoutUserNameAndNiCheng  @"https://www.zhouxi.net.cn:8000/backhome/setnicheng/v1.0/"
+
+//设置密码
+//@app.route('/backhome/setpassword/v1.0/<username>/<password>', methods=['POST'])
+#define SetPasswordStringWithoutUserNameAndPassword @"https://www.zhouxi.net.cn:8000/backhome/setpassword/v1.0/"
+
+//获取留言
+//@app.route('/backhome/getmessage/v1.0/<number>', methods=['GET'])
+#define GetMessageStringWithoutNumber  @"https://www.zhouxi.net.cn:8000/backhome/getmessage/v1.3/"
+
+//添加留言
+//@app.route('/backhome/addmessage/v1.0/<number>/<username>/<message>', methods=['POST'])
+#define AddMessageStringWithoutNumberAndUserNameAndMessage  @"https://www.zhouxi.net.cn:8000/backhome/addmessage/v1.0/"
+
+//检查账号是否存在
+//@app.route('backhome/checkaccount/v1.0/<username>', methods=['POST'])
+#define CheckAccountStringWithoutAccount @"https://www.zhouxi.net.cn:8000/backhome/checkaccount/v1.0/"
+
+//随拍地址
+#define suipaiAddress  @"http://obhpxxbl2.bkt.clouddn.com/SuiPai01.json"
+
+//新闻中心地址
+#define urlOfXinWenZhongXin @"http://obhpxxbl2.bkt.clouddn.com/XinWenZhongXin01.json"
+
+//防拐防骗地址
+#define urlOfFangGuaiFangPian @"http://obhpxxbl2.bkt.clouddn.com/FangGuaiFangPian01.json"
+
+//协发通告地址
+#define urlOfXieFaTongGao @"http://obhpxxbl2.bkt.clouddn.com/XieFaTongGao01.json"
+
+//本站通告地址
+#define urlOfBenZhanGongGao @"http://obhpxxbl2.bkt.clouddn.com/BenZhanGongGao01.json"
+
+//如何发布地址
+#define urlOfRuHeFaBu @"http://odt75s1jo.bkt.clouddn.com/%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%8302.html"
+
+//免责声明
+#define urlOfMianZe @"http://odt7co03l.bkt.clouddn.com/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E01.html"
+
+//综合消息地址
+#define urlOfMainMessage @"http://obhpxxbl2.bkt.clouddn.com/MainMessage.json"
+
+//被拐被骗首页地址
+#define beiGuaiBeiPianMainAddress @"http://obhpxxbl2.bkt.clouddn.com/BeiGuaiBeiPianMain03.json"
+
+//不明原因首页地址
+#define buMingYuanYinMainAddress @"http://obhpxxbl2.bkt.clouddn.com/BuMingYuanYinMain03.json"
+
+//儿女寻家首页地址
+#define erNvXunJiaMainAddress @"http://obhpxxbl2.bkt.clouddn.com/ErNvXunJiaMain03.json"
+
+//离家出走首页地址
+#define liJiaChuZouMainAddress @"http://obhpxxbl2.bkt.clouddn.com/LiJiaChuZouMain03.json"
+
+//迷路走失首页地址
+#define miLuZouShiMainAddress @"http://obhpxxbl2.bkt.clouddn.com/MiLuZouShiMain03.json"
+
+//特别寻人首页地址
+#define teBieXunRenMainAddress @"http://obhpxxbl2.bkt.clouddn.com/TeBieXunRenMain03.json"
+
+//首页JSON数据
+#define MainJSONAddress @"http://obhpxxbl2.bkt.clouddn.com/Main.json"
+
+//被拐被骗地址
+#define beiGuaiBeiPianAddress @"http://obhpxxbl2.bkt.clouddn.com/BeiGuaiBeiPian03.json"
+
+//不明原因地址
+#define buMingYuanYinAddress @"http://obhpxxbl2.bkt.clouddn.com/BuMingYuanYin03.json"
+
+//儿女寻家地址
+#define erNvXunJiaAddress @"http://obhpxxbl2.bkt.clouddn.com/ErNvXunJia03.json"
+
+//离家出走地址
+#define liJiaChuZouAddress @"http://obhpxxbl2.bkt.clouddn.com/LiJiaChuZou03.json"
+
+//迷路走失首页地址
+#define miLuZouShiAddress @"http://obhpxxbl2.bkt.clouddn.com/MiLuZouShi03.json"
+
+//全国打拐中心地址
+#define quanGuoDaGuaiAddress @"http://qgdgxq.mca.gov.cn/wsxq/wsxq/toMain.do"
+
+//防拐手册地址
+#define fangGuaiShouCe @"http://odt7ssz3w.bkt.clouddn.com/%E5%84%BF%E7%AB%A5%E9%98%B2%E6%8B%90%E6%94%BB%E7%95%A501.html"
+
+
+
