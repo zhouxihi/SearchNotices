@@ -464,7 +464,7 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
         
         self.statusBarView.alpha = 0;
     }else {
-        CGFloat alpha = 1-((20-offset)/20);
+        CGFloat alpha = 1-((120-offset)/120);
         //NSLog(@"%f", alpha);
         self.statusBarView.alpha = alpha;
     }
