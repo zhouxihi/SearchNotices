@@ -16,11 +16,12 @@
 #import "SubmitViewController.h"
 #import "SNManager.h"
 #import "SVProgressHUD.h"
+#import "WelcomeView.h"
 
 @interface AppDelegate ()<ZXTabBarDelegate>
 
 @property (nonatomic, strong) ZXTabBarController *zxTabBarVC;
-@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocationManager  *locationManager;
 
 @end
 
@@ -47,9 +48,33 @@
     manager.shouldToolbarUsesTextFieldTintColor = YES;
     manager.enableAutoToolbar = YES;
     
+    //设置RootWindow
     self.zxTabBarVC= [[ZXTabBarController alloc] init];
     self.zxTabBarVC.delegate = self;
     self.window.rootViewController = self.zxTabBarVC;
+    
+    //初始化动画UI
+    WelcomeView *welcomeView = [[WelcomeView alloc] initWithFrame:self.window.bounds];
+    [welcomeView setBackgroundColor:[UIColor whiteColor]];
+    welcomeView.alpha = 1;
+    [self.window addSubview:welcomeView];
+    self.window.rootViewController.view.alpha = 0;
+    
+    //加载动画
+    [UIView animateWithDuration:0.5
+                          delay:5
+                        options:UIViewAnimationOptionTransitionNone
+                     animations:^{
+        
+                         self.window.rootViewController.view.alpha = 1;
+                         welcomeView.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+        
+                         [welcomeView removeFromSuperview];
+                         
+                     }];
+    
 
     return YES;
 }

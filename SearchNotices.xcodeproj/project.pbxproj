@@ -179,6 +179,10 @@
 		74E963B51E2D0EA20057497D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E963B41E2D0EA20057497D /* Security.framework */; };
 		74E963B71E2D0EFA0057497D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E963B61E2D0EFA0057497D /* libc++.tbd */; };
 		74E963B91E2D104D0057497D /* SNLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74E963B81E2D104D0057497D /* SNLaunch Screen.storyboard */; };
+		74E963EC1E310D320057497D /* WelcomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E963EB1E310D320057497D /* WelcomeView.m */; };
+		74E963EE1E311BE90057497D /* parent-child.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E963ED1E311BE90057497D /* parent-child.png */; };
+		74E963F31E311DD40057497D /* startIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E963F11E311DD40057497D /* startIcon29x29.png */; };
+		74E963F41E311DD40057497D /* startIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E963F21E311DD40057497D /* startIcon29x29@2x.png */; };
 		74F400001E175A8C00B7F564 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4FFFF1E175A8C00B7F564 /* AdSupport.framework */; };
 		74F4FF8F1E12863F00B7F564 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4FF8E1E12863F00B7F564 /* DetailCell.m */; };
 		74F4FF921E1295A300B7F564 /* DetailDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F4FF911E1295A300B7F564 /* DetailDataSource.m */; };
@@ -514,6 +518,11 @@
 		74E963B41E2D0EA20057497D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		74E963B61E2D0EFA0057497D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		74E963B81E2D104D0057497D /* SNLaunch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "SNLaunch Screen.storyboard"; sourceTree = "<group>"; };
+		74E963EA1E310D320057497D /* WelcomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeView.h; sourceTree = "<group>"; };
+		74E963EB1E310D320057497D /* WelcomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeView.m; sourceTree = "<group>"; };
+		74E963ED1E311BE90057497D /* parent-child.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parent-child.png"; sourceTree = "<group>"; };
+		74E963F11E311DD40057497D /* startIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startIcon29x29.png; sourceTree = "<group>"; };
+		74E963F21E311DD40057497D /* startIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startIcon29x29@2x.png"; sourceTree = "<group>"; };
 		74F4000A1E175D5500B7F564 /* MOBFoundation 2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "MOBFoundation 2.framework"; path = "../../Source/第三方库/SMS_SDK/MOBFoundation 2.framework"; sourceTree = "<group>"; };
 		74F4FF8D1E12863F00B7F564 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
 		74F4FF8E1E12863F00B7F564 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
@@ -627,9 +636,12 @@
 		7437C34A1E025CF0006FF53B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				74E963ED1E311BE90057497D /* parent-child.png */,
 				7437C3531E025CF0006FF53B /* Main.storyboard */,
 				7437C3561E025CF0006FF53B /* Assets.xcassets */,
 				74E963B81E2D104D0057497D /* SNLaunch Screen.storyboard */,
+				74E963F11E311DD40057497D /* startIcon29x29.png */,
+				74E963F21E311DD40057497D /* startIcon29x29@2x.png */,
 				7437C4151E029E63006FF53B /* server.cer */,
 				7480C3981E0E5C7B006502FB /* Main.json */,
 				7437C35B1E025CF0006FF53B /* Info.plist */,
@@ -1149,6 +1161,8 @@
 				74F4FFE61E1755D200B7F564 /* Tool */,
 				7480C3951E0E4993006502FB /* SNManager.h */,
 				7480C3961E0E4993006502FB /* SNManager.m */,
+				74E963EA1E310D320057497D /* WelcomeView.h */,
+				74E963EB1E310D320057497D /* WelcomeView.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1406,7 +1420,7 @@
 					7437C3461E025CF0006FF53B = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = GN473LJ9EX;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1451,6 +1465,8 @@
 				7437C3CF1E025F52006FF53B /* account_normal@2x.png in Resources */,
 				7437C3D01E025F52006FF53B /* home_highlight@2x.png in Resources */,
 				7437C45E1E03D712006FF53B /* fenxiang@2x.png in Resources */,
+				74E963F31E311DD40057497D /* startIcon29x29.png in Resources */,
+				74E963EE1E311BE90057497D /* parent-child.png in Resources */,
 				7480C3991E0E5C7B006502FB /* Main.json in Resources */,
 				74E9638F1E250B700057497D /* bloom.caf in Resources */,
 				7480C38E1E0C1FC1006502FB /* jia.png in Resources */,
@@ -1466,6 +1482,7 @@
 				74CFE5841E1A29BC009EDDE6 /* IQKeyboardManager.bundle in Resources */,
 				74F4FFB31E140CBE00B7F564 /* guaiangaofa.png in Resources */,
 				7437C45C1E03D70B006FF53B /* ditu@2x.png in Resources */,
+				74E963F41E311DD40057497D /* startIcon29x29@2x.png in Resources */,
 				7480C38B1E0C1FC1006502FB /* bei.png in Resources */,
 				7437C3D61E025F52006FF53B /* plus_normal@2x.png in Resources */,
 				7480C38A1E0C1FC1006502FB /* bao.png in Resources */,
@@ -1620,6 +1637,7 @@
 				74CFE5811E1A29BC009EDDE6 /* IQTitleBarButtonItem.m in Sources */,
 				7437C44E1E030DA9006FF53B /* SDWebImageManager.m in Sources */,
 				7437C4531E030DA9006FF53B /* UIImage+WebP.m in Sources */,
+				74E963EC1E310D320057497D /* WelcomeView.m in Sources */,
 				7437C3E71E02612F006FF53B /* HomeViewController.m in Sources */,
 				7437C4491E030DA9006FF53B /* SDImageCache.m in Sources */,
 			);
@@ -1731,8 +1749,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = GN473LJ9EX;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SearchNotices/SMS_SDK",
@@ -1751,8 +1770,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhouxi.backhome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ac30793-a672-416b-b871-329a6cc191e7";
-				PROVISIONING_PROFILE_SPECIFIER = com.zhouxi.backhome;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1760,8 +1779,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = GN473LJ9EX;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SearchNotices/SMS_SDK",
@@ -1780,8 +1800,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhouxi.backhome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ac30793-a672-416b-b871-329a6cc191e7";
-				PROVISIONING_PROFILE_SPECIFIER = com.zhouxi.backhome;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
