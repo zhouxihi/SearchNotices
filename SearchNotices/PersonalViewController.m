@@ -152,7 +152,7 @@ static NSString * const PersonCellIdentifer = @"PersonCellIdentifer";
     }
     else {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"寻人启示\nVersion: 2.1.1" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"寻人启示\nVersion: 2.1.2" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert show];
     }
 }

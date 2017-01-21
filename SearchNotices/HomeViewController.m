@@ -42,6 +42,7 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
 @property (nonatomic, strong) NSMutableArray       *miLuArray;              //存储迷路走失模型
 @property (nonatomic, strong) NSMutableArray       *buMingArray;            //存储不明原因模型
 @property (nonatomic, strong) NSMutableArray       *erNvArray;              //存储儿女寻家模型
+@property (nonatomic, strong) UIView               *statusBarView;
 
 @end
 
@@ -199,6 +200,14 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
     
     [self.view addSubview:self.myCollectionView];
     
+    //改变首页状态栏背景色
+    self.statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+    self.statusBarView.alpha = 0;
+    self.statusBarView.backgroundColor = NavBarColor;
+    
+    [self.view addSubview:self.statusBarView];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     //解决TabBar遮挡
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -445,6 +454,19 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
         webVC.info                    = @"免责申明";
         
         [self.navigationController pushViewController:webVC animated:YES];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //NSLog(@"offset---scroll:%f",self.myCollectionView.contentOffset.y);
+    CGFloat offset = scrollView.contentOffset.y;
+    if (offset<0) {
+        
+        self.statusBarView.alpha = 0;
+    }else {
+        CGFloat alpha = 1-((20-offset)/20);
+        //NSLog(@"%f", alpha);
+        self.statusBarView.alpha = alpha;
     }
 }
 

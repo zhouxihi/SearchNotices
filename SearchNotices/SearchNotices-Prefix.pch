@@ -47,6 +47,7 @@
 
 #define BackColor [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]
 #define BlueBtnColor [UIColor colorWithRed:0/255.0 green:160/255.0 blue:225/255.0 alpha:1.0]
+#define NavBarColor [UIColor colorWithRed:250/255.0 green:227/255.0 blue:111/255.0 alpha:1.0]
 
 #define APPLINK @"https://itunes.apple.com/us/app/hu-zhu-xun-ren/id1181454346?l=zh&ls=1&mt=8"
 
