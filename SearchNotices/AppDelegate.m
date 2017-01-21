@@ -17,6 +17,7 @@
 #import "SNManager.h"
 #import "SVProgressHUD.h"
 #import "WelcomeView.h"
+#import "PlusViewController.h"
 
 @interface AppDelegate ()<ZXTabBarDelegate>
 
@@ -117,6 +118,7 @@
         NSInteger num = [self.zxTabBarVC selectedIndex];
         [self.zxTabBarVC.childViewControllers[num] pushViewController:subVC
                                                             animated:YES];
+
     } else {
         
         [SVProgressHUD showInfoWithStatus:@"请先登录"];

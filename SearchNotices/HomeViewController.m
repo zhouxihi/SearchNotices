@@ -65,9 +65,15 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 //初始化数组及AFN

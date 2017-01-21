@@ -14,8 +14,6 @@
 #import "ZXNavigationController.h"
 #import "UIImage+Image.h"
 #import "PlusView.h"
-#import "PlusViewController.h"
-//#import "SubmitViewController.h"
 
 @interface ZXTabBarController () <ZXTabBarDelegate>
 
@@ -88,9 +86,6 @@
     if ([self.delegate respondsToSelector:@selector(tabBarDidClickPlusButton:)]) {
     
         [self.delegate tabBarDidClickPlusButton:tabBar];
-//        SubmitViewController *subVC = [[SubmitViewController alloc] init];
-//        [self.childViewControllers[[self selectedIndex]] pushViewController:subVC
-//                                                                 animated:YES];
     }
 }
 @end
