@@ -200,7 +200,7 @@ static NSString * const DetailHeaderIdentifer = @"DetailHeaderIdentifer";
                   layout:(UICollectionViewLayout*)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH);
+    return CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH / 3 * 2 + 20);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

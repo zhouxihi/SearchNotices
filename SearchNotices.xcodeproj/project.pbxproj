@@ -129,6 +129,10 @@
 		7480C3991E0E5C7B006502FB /* Main.json in Resources */ = {isa = PBXBuildFile; fileRef = 7480C3981E0E5C7B006502FB /* Main.json */; };
 		749767DD1E101F0800EA97DD /* MoreCategoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 749767DC1E101F0800EA97DD /* MoreCategoryDataSource.m */; };
 		749767E01E10223800EA97DD /* MoreCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 749767DF1E10223800EA97DD /* MoreCategoryViewController.m */; };
+		74B600FB1E42294E0006B059 /* ZXCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B600FA1E42294E0006B059 /* ZXCollectionViewFlowLayout.m */; };
+		74B600FE1E4620600006B059 /* PhotoFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B600FD1E4620600006B059 /* PhotoFlowLayout.m */; };
+		74B601011E46FA850006B059 /* PresentPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B601001E46FA850006B059 /* PresentPhotoViewController.m */; };
+		74BE2AD61E59CE800061FC86 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BE2AD51E59CE800061FC86 /* UserNotifications.framework */; };
 		74CFE5761E1A29BC009EDDE6 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CFE5541E1A29BC009EDDE6 /* IQNSArray+Sort.m */; };
 		74CFE5771E1A29BC009EDDE6 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CFE5561E1A29BC009EDDE6 /* IQUIScrollView+Additions.m */; };
 		74CFE5781E1A29BC009EDDE6 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CFE5581E1A29BC009EDDE6 /* IQUITextFieldView+Additions.m */; };
@@ -428,6 +432,14 @@
 		749767DC1E101F0800EA97DD /* MoreCategoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCategoryDataSource.m; sourceTree = "<group>"; };
 		749767DE1E10223800EA97DD /* MoreCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCategoryViewController.h; sourceTree = "<group>"; };
 		749767DF1E10223800EA97DD /* MoreCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCategoryViewController.m; sourceTree = "<group>"; };
+		74B600F91E42294E0006B059 /* ZXCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		74B600FA1E42294E0006B059 /* ZXCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		74B600FC1E4620600006B059 /* PhotoFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFlowLayout.h; sourceTree = "<group>"; };
+		74B600FD1E4620600006B059 /* PhotoFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFlowLayout.m; sourceTree = "<group>"; };
+		74B600FF1E46FA850006B059 /* PresentPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentPhotoViewController.h; sourceTree = "<group>"; };
+		74B601001E46FA850006B059 /* PresentPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentPhotoViewController.m; sourceTree = "<group>"; };
+		74BE2AD41E59CE0A0061FC86 /* SearchNotices.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SearchNotices.entitlements; sourceTree = "<group>"; };
+		74BE2AD51E59CE800061FC86 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		74CFE5531E1A29BC009EDDE6 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		74CFE5541E1A29BC009EDDE6 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		74CFE5551E1A29BC009EDDE6 /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
@@ -564,6 +576,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74BE2AD61E59CE800061FC86 /* UserNotifications.framework in Frameworks */,
 				74E963B71E2D0EFA0057497D /* libc++.tbd in Frameworks */,
 				74F4FFF21E17562E00B7F564 /* libz.tbd in Frameworks */,
 				74E963B51E2D0EA20057497D /* Security.framework in Frameworks */,
@@ -622,6 +635,7 @@
 		7437C3491E025CF0006FF53B /* SearchNotices */ = {
 			isa = PBXGroup;
 			children = (
+				74BE2AD41E59CE0A0061FC86 /* SearchNotices.entitlements */,
 				7480C3941E0E4974006502FB /* Category */,
 				7437C4171E02CEEF006FF53B /* Others */,
 				7437C3E21E0260CA006FF53B /* Personal(我的) */,
@@ -726,8 +740,12 @@
 				7437C5171E059881006FF53B /* MapViewController.m */,
 				7480C3581E0AA7D6006502FB /* ShowPhotoViewController.h */,
 				74E715D81E08362C00716B6A /* ShowPhotoViewController.m */,
+				74B600FF1E46FA850006B059 /* PresentPhotoViewController.h */,
+				74B601001E46FA850006B059 /* PresentPhotoViewController.m */,
 				7437C51C1E069B97006FF53B /* MessageBoardViewController.h */,
 				7437C51D1E069B97006FF53B /* MessageBoardViewController.m */,
+				74B600FC1E4620600006B059 /* PhotoFlowLayout.h */,
+				74B600FD1E4620600006B059 /* PhotoFlowLayout.m */,
 			);
 			name = "Recognize(随拍)";
 			sourceTree = "<group>";
@@ -1094,6 +1112,8 @@
 				74E963931E2674770057497D /* SDCHeader.m */,
 				74E9639C1E2A51D60057497D /* selectedImageCell.h */,
 				74E9639D1E2A51D60057497D /* selectedImageCell.m */,
+				74B600F91E42294E0006B059 /* ZXCollectionViewFlowLayout.h */,
+				74B600FA1E42294E0006B059 /* ZXCollectionViewFlowLayout.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1370,6 +1390,7 @@
 		74F4FFF01E17562E00B7F564 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74BE2AD51E59CE800061FC86 /* UserNotifications.framework */,
 				74E963B61E2D0EFA0057497D /* libc++.tbd */,
 				74E963B41E2D0EA20057497D /* Security.framework */,
 				74E9639A1E2A4C2D0057497D /* MobileCoreServices.framework */,
@@ -1420,7 +1441,15 @@
 					7437C3461E025CF0006FF53B = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = GN473LJ9EX;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1508,6 +1537,7 @@
 				74F4FF921E1295A300B7F564 /* DetailDataSource.m in Sources */,
 				7437C51E1E069B97006FF53B /* MessageBoardViewController.m in Sources */,
 				7437C4ED1E0465CB006FF53B /* MJRefreshBackFooter.m in Sources */,
+				74B601011E46FA850006B059 /* PresentPhotoViewController.m in Sources */,
 				74F4FFAF1E1404BF00B7F564 /* UIView+SDExtension.m in Sources */,
 				7480C37D1E0C13AA006502FB /* HomeDataSource.m in Sources */,
 				7437C4EF1E0465CB006FF53B /* MJRefreshFooter.m in Sources */,
@@ -1520,6 +1550,7 @@
 				7437C3521E025CF0006FF53B /* ViewController.m in Sources */,
 				7437C3DB1E025F52006FF53B /* UIImage+Image.m in Sources */,
 				7437C34C1E025CF0006FF53B /* main.m in Sources */,
+				74B600FE1E4620600006B059 /* PhotoFlowLayout.m in Sources */,
 				74E963571E22811A0057497D /* PlusViewController.m in Sources */,
 				74CFE57D1E1A29BC009EDDE6 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				7437C4501E030DA9006FF53B /* UIButton+WebCache.m in Sources */,
@@ -1617,6 +1648,7 @@
 				7437C50D1E0574C3006FF53B /* GYZCity.m in Sources */,
 				74E715DF1E08366500716B6A /* ShowPhotoDataSource.m in Sources */,
 				74F4FF981E12B9E700B7F564 /* DetailHeader.m in Sources */,
+				74B600FB1E42294E0006B059 /* ZXCollectionViewFlowLayout.m in Sources */,
 				7480C3731E0AD161006502FB /* HomeCell.m in Sources */,
 				7437C44F1E030DA9006FF53B /* SDWebImagePrefetcher.m in Sources */,
 				74CFE5761E1A29BC009EDDE6 /* IQNSArray+Sort.m in Sources */,
@@ -1678,7 +1710,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1700,6 +1732,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "23279800-ad16-4fd6-a8b2-8a50f516f28f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1740,6 +1773,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "23279800-ad16-4fd6-a8b2-8a50f516f28f";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1749,8 +1783,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = GN473LJ9EX;
+				CODE_SIGN_ENTITLEMENTS = SearchNotices/SearchNotices.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SearchNotices/SMS_SDK",
@@ -1769,8 +1805,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhouxi.backhome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ac30793-a672-416b-b871-329a6cc191e7";
-				PROVISIONING_PROFILE_SPECIFIER = com.zhouxi.backhome;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1778,8 +1814,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = GN473LJ9EX;
+				CODE_SIGN_ENTITLEMENTS = SearchNotices/SearchNotices.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SearchNotices/SMS_SDK",
@@ -1798,8 +1835,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhouxi.backhome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ac30793-a672-416b-b871-329a6cc191e7";
-				PROVISIONING_PROFILE_SPECIFIER = com.zhouxi.backhome;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

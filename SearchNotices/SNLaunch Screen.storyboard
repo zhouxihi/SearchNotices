@@ -34,7 +34,7 @@
                                     <constraint firstAttribute="height" constant="29" id="24c-Fg-Jsa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <state key="normal" title=" 寻人启示" image="startIcon29x29.png">
+                                <state key="normal" title=" 互助寻人" image="startIcon29x29.png">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>

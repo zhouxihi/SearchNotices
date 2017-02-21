@@ -22,6 +22,7 @@
 #import "DetailViewController.h"
 #import "SNManager.h"
 #import "SDCHeader.h"
+#import "ZXCollectionViewFlowLayout.h"
 
 static NSString * const CategoryCellIdentifier = @"CategoryCellIdentifier";
 static NSString * const HomeCellIdentifer      = @"HomeCellIdentifer";
@@ -67,7 +68,8 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
 }
 
@@ -138,7 +140,8 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
     self.myCollectionView = ({
     
         //创建CollectionFlowLayout
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        //UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        ZXCollectionViewFlowLayout *layout = [[ZXCollectionViewFlowLayout alloc] init];
         
         layout.scrollDirection             = UICollectionViewScrollDirectionVertical;
         
@@ -302,7 +305,7 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
         return CGSizeMake(SCREEN_WIDTH / 5, 10 + SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15 + 25);
     } else {
         
-        return CGSizeMake((SCREEN_WIDTH - 2.5 ) / 2 , (SCREEN_WIDTH / 4 - 5) * 1.5 + 20);
+        return CGSizeMake((SCREEN_WIDTH - 2.5 ) / 2 , (SCREEN_WIDTH / 4 - 5) * 1 + 10);
     }
 }
 
@@ -315,7 +318,7 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
         return UIEdgeInsetsMake(1, 0.5, 4, 0.5);
     } else {
         
-        return UIEdgeInsetsMake(0, 0, 4, 0);
+        return UIEdgeInsetsMake(0, 0, 3.95, 0);
     }
 }
 
@@ -347,7 +350,7 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
         return CGSizeMake(SCREEN_WIDTH, 25);
     }
     
-    return CGSizeMake(SCREEN_WIDTH, 120);
+    return CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT / 4.5);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
@@ -464,7 +467,7 @@ static NSString * const SDCHeaderIdentifer     = @"SDCHeaderIdentifer";
         
         self.statusBarView.alpha = 0;
     }else {
-        CGFloat alpha = 1-((120-offset)/120);
+        CGFloat alpha = 1- ((SCREEN_HEIGHT / 4.5-offset) / (SCREEN_HEIGHT / 4.5));
         //NSLog(@"%f", alpha);
         self.statusBarView.alpha = alpha;
     }

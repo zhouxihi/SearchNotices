@@ -115,8 +115,12 @@ static NSString * const PersonCellIdentifer = @"PersonCellIdentifer";
             
             //如果没有登录则跳转至登录界面
             LoginViewController *loginVC = [[LoginViewController alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
-            [nav.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
+            UINavigationController *nav  = \
+                            [[UINavigationController alloc] initWithRootViewController:loginVC];
+            
+            [nav.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]]
+                                    forBarMetrics:UIBarMetricsDefault];
+            
             [nav.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]];
             
             [self presentViewController:nav animated:YES completion:nil];
@@ -152,7 +156,7 @@ static NSString * const PersonCellIdentifer = @"PersonCellIdentifer";
     }
     else {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"寻人启示\nVersion: 2.1.2" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"互助寻人\nVersion: 2.2" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert show];
     }
 }

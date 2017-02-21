@@ -62,8 +62,8 @@
     
         UILabel *lable      = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 80, 35)];
         lable.text          = @"当前密码";
-        lable.font          = [UIFont systemFontOfSize:14];
-        lable.textColor     = [UIColor grayColor];
+        lable.font          = [UIFont boldSystemFontOfSize:14];
+        lable.textColor     = [UIColor darkGrayColor];
         lable.textAlignment = NSTextAlignmentRight;
         
         lable;
@@ -75,8 +75,8 @@
     
         UILabel *lable      = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 80, 35)];
         lable.text          = @"新的密码";
-        lable.font          = [UIFont systemFontOfSize:14];
-        lable.textColor     = [UIColor grayColor];
+        lable.font          = [UIFont boldSystemFontOfSize:14];
+        lable.textColor     = [UIColor darkGrayColor];
         lable.textAlignment = NSTextAlignmentRight;
         
         lable;
@@ -88,8 +88,8 @@
     
         UILabel *lable      = [[UILabel alloc] initWithFrame:CGRectMake(20, 160, 80, 35)];
         lable.text          = @"重复密码";
-        lable.font          = [UIFont systemFontOfSize:14];
-        lable.textColor     = [UIColor grayColor];
+        lable.font          = [UIFont boldSystemFontOfSize:14];
+        lable.textColor     = [UIColor darkGrayColor];
         lable.textAlignment = NSTextAlignmentRight;
         
         lable;
@@ -100,12 +100,13 @@
     //创建密码框
     self.oldText = ({
     
-        UITextField *text    = [[UITextField alloc] initWithFrame:\
+        UITextField *text       = [[UITextField alloc] initWithFrame:\
                                 CGRectMake(120, 40, SCREEN_WIDTH - 120 - 40, 35)];
-        text.backgroundColor = [UIColor whiteColor];
-        text.textAlignment   = NSTextAlignmentCenter;
-        text.font            = [UIFont systemFontOfSize:14];
-        text.secureTextEntry = YES;
+        text.backgroundColor    = [UIColor whiteColor];
+        text.textAlignment      = NSTextAlignmentCenter;
+        text.font               = [UIFont systemFontOfSize:14];
+        text.secureTextEntry    = YES;
+        text.layer.cornerRadius = 5;
         
         text;
     });
@@ -114,12 +115,13 @@
     
     self.newpwdText = ({
     
-        UITextField *text    = [[UITextField alloc] initWithFrame:\
+        UITextField *text       = [[UITextField alloc] initWithFrame:\
                                 CGRectMake(120, 100, SCREEN_WIDTH - 120 - 40, 35)];
-        text.backgroundColor = [UIColor whiteColor];
-        text.textAlignment   = NSTextAlignmentCenter;
-        text.font            = [UIFont systemFontOfSize:14];
-        text.secureTextEntry = YES;
+        text.backgroundColor    = [UIColor whiteColor];
+        text.textAlignment      = NSTextAlignmentCenter;
+        text.font               = [UIFont systemFontOfSize:14];
+        text.secureTextEntry    = YES;
+        text.layer.cornerRadius = 5;
         
         text;
     });
@@ -128,12 +130,13 @@
     
     self.confirmText = ({
     
-        UITextField *text    = [[UITextField alloc] initWithFrame:\
+        UITextField *text       = [[UITextField alloc] initWithFrame:\
                                 CGRectMake(120, 160, SCREEN_WIDTH - 120 - 40, 35)];
-        text.backgroundColor = [UIColor whiteColor];
-        text.textAlignment   = NSTextAlignmentCenter;
-        text.font            = [UIFont systemFontOfSize:14];
-        text.secureTextEntry = YES;
+        text.backgroundColor    = [UIColor whiteColor];
+        text.textAlignment      = NSTextAlignmentCenter;
+        text.font               = [UIFont systemFontOfSize:14];
+        text.secureTextEntry    = YES;
+        text.layer.cornerRadius = 5;
         
         text;
     });

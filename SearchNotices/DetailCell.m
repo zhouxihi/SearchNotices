@@ -20,7 +20,7 @@
         //初始化控件
         self.imgView = ({
         
-            UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH /6, 5, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH)];
+            UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH /6, 5, SCREEN_WIDTH / 3 * 2, SCREEN_WIDTH / 3 * 2)];
             
             img;
         });

@@ -8,10 +8,10 @@
 
 #import <Bugly/Bugly.h>
 #import <CoreLocation/CoreLocation.h>
+#import <SMS_SDK/SMSSDK.h>
 
 #import "AppDelegate.h"
 #import "ZXTabBarController.h"
-#import <SMS_SDK/SMSSDK.h>
 #import "IQKeyboardManager.h"
 #import "SubmitViewController.h"
 #import "SNManager.h"
@@ -31,6 +31,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    application.applicationIconBadgeNumber = 0;
+    
+    //创建UIUserNotificationSettings, 并设置消息的显示类型
+    UIUserNotificationSettings *notiSettings = \
+        [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge |
+                                                      UIUserNotificationTypeAlert |
+                                                      UIUserNotificationTypeSound)
+                                          categories:nil];
+    
+    //注册远程通知
+    [application registerUserNotificationSettings:notiSettings];
+    
+    [application registerForRemoteNotifications];
+    
     //注册SMSSDK
     [SMSSDK registerApp:@"1784069339db1"
              withSecret:@"27fc388c830b08403a5d63d51ee50673"];
@@ -47,23 +61,23 @@
     manager.enable             = YES;
     manager.shouldResignOnTouchOutside = YES;
     manager.shouldToolbarUsesTextFieldTintColor = YES;
-    manager.enableAutoToolbar = YES;
+    manager.enableAutoToolbar  = YES;
     
     //设置RootWindow
-    self.zxTabBarVC= [[ZXTabBarController alloc] init];
-    self.zxTabBarVC.delegate = self;
+    self.zxTabBarVC                = [[ZXTabBarController alloc] init];
+    self.zxTabBarVC.delegate       = self;
     self.window.rootViewController = self.zxTabBarVC;
     
     //初始化动画UI
     WelcomeView *welcomeView = [[WelcomeView alloc] initWithFrame:self.window.bounds];
     [welcomeView setBackgroundColor:[UIColor whiteColor]];
-    welcomeView.alpha = 1;
+    welcomeView.alpha        = 1;
     [self.window addSubview:welcomeView];
     self.window.rootViewController.view.alpha = 0;
     
     //加载动画
     [UIView animateWithDuration:0.5
-                          delay:5
+                          delay:3.9
                         options:UIViewAnimationOptionTransitionNone
                      animations:^{
         
@@ -80,6 +94,28 @@
     return YES;
 }
 
+//获取deviceToken
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(nonnull NSData *)deviceToken {
+    
+    LRLog(@"deviceToken: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+    
+    
+    NSLog(@"userInfo == %@",userInfo);
+    NSString *message = [[userInfo objectForKey:@"aps"]objectForKey:@"alert"];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    
+    [alert show];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    
+    NSLog(@"Regist fail%@",error);
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

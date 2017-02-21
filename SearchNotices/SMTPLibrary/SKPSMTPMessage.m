@@ -191,7 +191,12 @@ BOOL isSend;
                                                    NSLocalizedString(@"Try sending your message again later.", @"server generic error recovery"),NSLocalizedRecoverySuggestionErrorKey,nil]];
         if (!isSend) {
             isSend = YES;
-            [delegate messageFailed:self error:error];
+            
+            if (delegate) {
+                [delegate messageFailed:self error:error];
+            }
+            //[delegate messageFailed:self error:error];
+            LRLog(@"出错了");
             [self stopWatchdog];
         }
         //[delegate messageFailed:self error:error];增加判断

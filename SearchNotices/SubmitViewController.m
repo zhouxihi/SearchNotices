@@ -24,7 +24,6 @@ static NSString * const submitCellIdentifer = @"submitCellIdentifer";
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 UICollectionViewDelegate,
-SKPSMTPMessageDelegate,
 MKMapViewDelegate,
 CLLocationManagerDelegate
 >
@@ -46,6 +45,9 @@ CLLocationManagerDelegate
 @property (nonatomic, strong) CLLocationManager         *locationManager;
 
 @property (nonatomic, assign) BOOL                      maplock;
+@property (nonatomic, strong) NSMutableArray            *submitImageArray;
+@property (nonatomic, assign) NSInteger                 mailCount;
+@property (nonatomic, strong) SKPSMTPMessage            *mm;
 
 @end
 
@@ -78,10 +80,11 @@ CLLocationManagerDelegate
         self.imageMutableArray = [@[] mutableCopy];
     }
     
-    self.city            = @"";
-    self.jiedao          = @"";
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.geocoder        = [[CLGeocoder alloc] init];
+    self.city             = @"";
+    self.jiedao           = @"";
+    self.submitImageArray = [@[] mutableCopy];
+    self.locationManager  = [[CLLocationManager alloc] init];
+    self.geocoder         = [[CLGeocoder alloc] init];
     
     //获取定位权限
     [self.locationManager requestWhenInUseAuthorization];
@@ -92,6 +95,7 @@ CLLocationManagerDelegate
     
     //设置背景颜色
     [self.view setBackgroundColor:BackColor];
+    
     
     //添加类型选择说明
     UILabel *choseLable = ({
@@ -424,35 +428,97 @@ CLLocationManagerDelegate
 
 }
 
-//发送邮件
-- (void)sendMail {
+//增加单独的发布寻人方法, 不用获取定位信息(调用前需要先做数据检查, 此处没有做数据检查)
+- (void)submitXunRenMethod {
     
-    [SVProgressHUD showWithStatus:@"发送中"];
+    LRLog(@"发布寻人");
     
-    SKPSMTPMessage * mm=[[SKPSMTPMessage alloc] init];
+    [SVProgressHUD showWithStatus:@"准备中"];
+    
+    //配置不带位置信息的邮件内容
+    self.mm = [[SKPSMTPMessage alloc] init];
     
     //设置邮件标题
-    NSString *subTitle;
-    if (self.segmentController.selectedSegmentIndex) {
-        
-        subTitle = @"发布随拍";
-    } else {
-        
-        subTitle = @"发布寻人";
-    }
+    NSString *subTitle = @"发布寻人";
     
-    [mm setSubject:subTitle];
-    [mm setToEmail:@"zhouxihi@aliyun.com"];
-    [mm setFromEmail:@"zhouxihi@yeah.net"];
-    [mm setRelayHost:@"smtp.yeah.net"];
-    [mm setRequiresAuth:YES];
-    [mm setLogin:@"zhouxihi@yeah.net"];
-    [mm setPass:@"594588zx"];
-    [mm setWantsSecure:YES];
-    [mm setDelegate:self];
+    [self.mm setSubject:         subTitle];
+    [self.mm setToEmail:         @"zhouxihi@aliyun.com"];
+    [self.mm setFromEmail:       @"zhouxihi@yeah.net"];
+    [self.mm setRelayHost:       @"smtp.yeah.net"];
+    [self.mm setRequiresAuth:    YES];
+    [self.mm setLogin:           @"zhouxihi@yeah.net"];
+    [self.mm setPass:            @"594588zx"];
+    [self.mm setWantsSecure:     YES];
+    [self.mm setDelegate:        self];
     
     NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+    
+    //配置邮件信息
+    
+    //描述信息
+    NSString *locat = [NSString stringWithFormat:@"描述信息:\n%@", self.infoTextView.text];
+    
+    //发送账号
+    locat           = [locat stringByAppendingString:\
+                       [NSString stringWithFormat:@"\n\n发送账号: \n%@", [zx_SN account]]];
+    
 
+    //正文
+    NSDictionary *zhengwen = @{kSKPSMTPPartContentTypeKey: @"text/plain",
+                               kSKPSMTPPartMessageKey: locat,
+                               kSKPSMTPPartContentTransferEncodingKey: @"8bit"};
+    
+    [mutableArray addObject:zhengwen];
+    
+    //附件
+    for (int i = 0; i < self.imageMutableArray.count; i ++) {
+        
+        NSData *data             = UIImagePNGRepresentation([self.submitImageArray objectAtIndex:i]);
+        NSString *typeKey        = [NSString stringWithFormat:@"image/png;\r\n\tx-unix-mode=0644;\r\n\tname=\"%d.png\"", i];
+        NSString *dispositionKey = [NSString stringWithFormat:@"attachment;\r\n\tfilename=\"%d.png\"", i];
+        NSDictionary *part       = @{kSKPSMTPPartContentTypeKey: typeKey,
+                                     kSKPSMTPPartContentDispositionKey: dispositionKey,
+                                     kSKPSMTPPartMessageKey: [data encodeBase64ForData],
+                                     kSKPSMTPPartContentTransferEncodingKey: @"base64"};
+        
+        [mutableArray addObject:part];
+    }
+    
+    NSArray *array = [mutableArray copy];
+    
+    [self.mm setParts:array];
+    
+    [SVProgressHUD showWithStatus:@"发送中"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.mm send];
+    });
+    
+}
+
+//增加单独的发布随拍方法, 需要获取定位信息(调用前需要先做数据检查, 此处没有做数据检查)
+- (void)submitSuiPaiMethod {
+    
+    LRLog(@"发布随拍");
+    
+    //配置和发送带有位置信息的邮件内容
+    self.mm=[[SKPSMTPMessage alloc] init];
+    
+    //设置邮件标题
+    NSString *subTitle = @"发布随拍";
+    
+    [self.mm setSubject:         subTitle];
+    [self.mm setToEmail:         @"zhouxihi@aliyun.com"];
+    [self.mm setFromEmail:       @"zhouxihi@yeah.net"];
+    [self.mm setRelayHost:       @"smtp.yeah.net"];
+    [self.mm setRequiresAuth:    YES];
+    [self.mm setLogin:           @"zhouxihi@yeah.net"];
+    [self.mm setPass:            @"594588zx"];
+    [self.mm setWantsSecure:     YES];
+    [self.mm setDelegate:        self];
+    
+    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+    
     //配置邮件信息
     
     //描述信息
@@ -478,26 +544,44 @@ CLLocationManagerDelegate
     locat = [locat stringByAppendingString:\
              [NSString stringWithFormat:@"\n\n经度: \n%f", self.longitude]];
     //正文
-    NSDictionary *zhengwen = @{kSKPSMTPPartContentTypeKey: @"text/plain", kSKPSMTPPartMessageKey: locat, kSKPSMTPPartContentTransferEncodingKey: @"8bit"};
+    NSDictionary *zhengwen = @{kSKPSMTPPartContentTypeKey: @"text/plain",
+                               kSKPSMTPPartMessageKey: locat,
+                               kSKPSMTPPartContentTransferEncodingKey: @"8bit"};
+    
     [mutableArray addObject:zhengwen];
     
     //附件
     for (int i = 0; i < self.imageMutableArray.count; i ++) {
-        NSData *data = UIImagePNGRepresentation([self.imageMutableArray objectAtIndex:i]);
-        NSString *typeKey = [NSString stringWithFormat:@"image/png;\r\n\tx-unix-mode=0644;\r\n\tname=\"%d.png\"", i];
+        
+        NSData *data             = UIImagePNGRepresentation([self.submitImageArray objectAtIndex:i]);
+        NSString *typeKey        = [NSString stringWithFormat:@"image/png;\r\n\tx-unix-mode=0644;\r\n\tname=\"%d.png\"", i];
         NSString *dispositionKey = [NSString stringWithFormat:@"attachment;\r\n\tfilename=\"%d.png\"", i];
-        NSDictionary *part = @{kSKPSMTPPartContentTypeKey: typeKey, kSKPSMTPPartContentDispositionKey: dispositionKey, kSKPSMTPPartMessageKey: [data encodeBase64ForData], kSKPSMTPPartContentTransferEncodingKey: @"base64"};
+        NSDictionary *part       = @{kSKPSMTPPartContentTypeKey: typeKey,
+                                     kSKPSMTPPartContentDispositionKey: dispositionKey,
+                                     kSKPSMTPPartMessageKey: [data encodeBase64ForData],
+                                     kSKPSMTPPartContentTransferEncodingKey: @"base64"};
+        
         [mutableArray addObject:part];
     }
     
     NSArray *array = [mutableArray copy];
     
-    [mm setParts:array];
+    [self.mm setParts:array];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [mm send];
+        
+        [self.mm send];
     });
+
+}
+
+- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
     
+    UIGraphicsBeginImageContext(size);
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
 }
 
 - (void)submitAction {
@@ -519,10 +603,37 @@ CLLocationManagerDelegate
     }
     else {
         
-        self.maplock = FALSE;
+//        self.maplock = FALSE;
+//        self.navigationController.navigationBar.userInteractionEnabled = NO;
+//        LRLog(@"发布");
+//        [self startToGetLocation];
+        
+        //增加判断用户选择的是发布寻人 还是 发布随拍
+        
+        //如果选择发布寻人, 则调用不加载位置信息的发送方法submitXunRenMethod
+        
+        self.maplock                                                   = FALSE;
         self.navigationController.navigationBar.userInteractionEnabled = NO;
-        LRLog(@"发布");
-        [self startToGetLocation];
+        
+        //处理图片
+        [SVProgressHUD showWithStatus:@"图片处理中"];
+        //self.submitImageArray = [self.imageMutableArray mutableCopy];
+        
+        for (UIImage *img in self.imageMutableArray) {
+            
+            UIImage *scaledImage = [self scaleToSize:img size:CGSizeMake(320, 320)];
+            [self.submitImageArray addObject:scaledImage];
+        }
+        
+        if (self.segmentController.selectedSegmentIndex == 0) {
+            
+            LRLog(@"准备发布寻人");
+            [self submitXunRenMethod];
+        } else {
+            
+            LRLog(@"准备发布随拍");
+            [self startToGetLocation];
+        }
     }
 }
 
@@ -619,7 +730,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LRWeakSelf(self)
     [SVProgressHUD showSuccessWithStatus:@"发布成功, 愿所有宝贝早日回家"];
-    [SVProgressHUD dismissWithDelay:1 completion:^{
+    [SVProgressHUD dismissWithDelay:1.5 completion:^{
         
         LRStrongSelf(self)
         self.navigationController.navigationBar.userInteractionEnabled = YES;
@@ -635,7 +746,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LRWeakSelf(self)
     [SVProgressHUD showInfoWithStatus:@"发布失败, 请使用 WiFi/4G 网络, 或稍后再尝试发布"];
-    [SVProgressHUD dismissWithDelay:1 completion:^{
+    [SVProgressHUD dismissWithDelay:1.5 completion:^{
         
         LRStrongSelf(self)
         self.navigationController.navigationBar.userInteractionEnabled = YES;
@@ -663,18 +774,21 @@ didUpdateUserLocation:(MKUserLocation *)userLocation NS_AVAILABLE(10_9, 4_0) {
             if (placemarks.count > 0) {
                 CLPlacemark *placemark = placemarks[0];
                 
-                self.city = placemark.locality;
+                self.city              = placemark.locality;
                 
-                NSArray *addrArray = [placemark.addressDictionary objectForKey:@"FormattedAddressLines"];
-                NSMutableString *addr = [[NSMutableString alloc] init];
+                NSArray *addrArray     = [placemark.addressDictionary objectForKey:@"FormattedAddressLines"];
+                NSMutableString *addr  = [[NSMutableString alloc] init];
+                
                 for (int i = 0; i < addrArray.count; i++) {
+                    
                     [addr appendString:addrArray[i]];
                 }
                 //[SVProgressHUD showWithStatus:@"解析成功"];
-                self.jiedao = [addr copy];
+                self.jiedao  = [addr copy];
                 
                 self.mapView = nil;
-                [self sendMail];
+                
+                [self submitSuiPaiMethod];
                 
             } else {
 

@@ -21,7 +21,7 @@
         self.imageView = ({
         
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:\
-                            CGRectMake(5, 5, SCREEN_WIDTH / 4 - 5, (SCREEN_WIDTH / 4 - 5) * 1.5)];
+                            CGRectMake(5, 5, SCREEN_WIDTH / 4 - 5, (SCREEN_WIDTH / 4 - 5) * 1)];
             
             //imgView.contentMode  = UIViewContentModeScaleAspectFit;
             
@@ -34,7 +34,7 @@
                               CGRectMake(SCREEN_WIDTH / 4 + 5, 5, SCREEN_WIDTH / 4 - 10, 25)];
             
             lable.textAlignment = NSTextAlignmentLeft;
-            lable.font          = [UIFont systemFontOfSize:12];
+            lable.font          = [UIFont systemFontOfSize:12 weight:0.1];
     
             lable;
         });
@@ -53,7 +53,7 @@
         self.genderLable = ({
         
             UILabel *lable = [[UILabel alloc] initWithFrame:\
-                              CGRectMake(SCREEN_WIDTH / 4 + 5, 60, SCREEN_WIDTH / 4 - 10, 20)];
+                              CGRectMake(SCREEN_WIDTH / 4 + 5, 40, SCREEN_WIDTH / 4 - 10, 20)];
             
             lable.textAlignment = NSTextAlignmentLeft;
             lable.font          = [UIFont systemFontOfSize:10 weight:-0.2];
@@ -64,7 +64,7 @@
         self.hujiLable = ({
         
             UILabel *lable = [[UILabel alloc] initWithFrame:\
-                              CGRectMake(SCREEN_WIDTH / 4 + 5, 85, SCREEN_WIDTH / 4 - 10, 25)];
+                              CGRectMake(SCREEN_WIDTH / 4 + 5, 60, SCREEN_WIDTH / 4 - 10, 25)];
             
             lable.textAlignment = NSTextAlignmentLeft;
             lable.font          = [UIFont systemFontOfSize:10 weight:-0.2];
@@ -76,7 +76,7 @@
         //将控件添加到界面
         [self addSubview:self.imageView];
         [self addSubview:self.titleLable];
-        [self addSubview:self.nameLable];
+        //[self addSubview:self.nameLable];
         [self addSubview:self.genderLable];
         [self addSubview:self.hujiLable];
         

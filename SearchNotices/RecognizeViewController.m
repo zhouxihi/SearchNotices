@@ -24,6 +24,7 @@
 #import "ShowPhotoCollectionViewCell.h"
 #import "SVProgressHUD.h"
 #import "SubmitViewController.h"
+#import "PresentPhotoViewController.h"
 
 static NSString * const CollectionMainCellIdentifer = @"MainCell";
 static NSString * const CollectionBtnCellIdentifer  = @"BtnCell";
@@ -447,7 +448,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     RecognizeModel *model = [self.showModels objectAtIndex:indexPath.section];
     if (indexPath.row == kMainUI) {
         //跳转至照片
-        ShowPhotoViewController *photoVC = [[ShowPhotoViewController alloc] init];
+//        ShowPhotoViewController *photoVC = [[ShowPhotoViewController alloc] init];
+        PresentPhotoViewController *photoVC = [[PresentPhotoViewController alloc] init];
         photoVC.imglinkArray         = model.ImageArray;
         [self presentViewController:photoVC animated:YES completion:nil];
     }

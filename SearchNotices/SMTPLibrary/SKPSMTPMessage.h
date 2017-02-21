@@ -138,4 +138,8 @@ extern NSString *kSKPSMTPPartContentTransferEncodingKey;
 
 - (BOOL)send;
 
+- (void)cleanUpStreams;
+
+- (void)stopWatchdog;
+
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKPSMTPMessage.h"
 
-@interface SubmitViewController : UIViewController
+@interface SubmitViewController : UIViewController<SKPSMTPMessageDelegate>
 
 @property (nonatomic, strong) NSMutableArray *imageMutableArray;
 

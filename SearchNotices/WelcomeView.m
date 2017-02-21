@@ -42,7 +42,7 @@
         
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.frame = CGRectMake(20, SCREEN_HEIGHT - 40 - 29, SCREEN_WIDTH - 40, 29);
-            [button setTitle:@" 寻人启示" forState:UIControlStateNormal];
+            [button setTitle:@" 互助寻人" forState:UIControlStateNormal];
             [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
             [button setImage:[UIImage imageNamed:@"startIcon29x29.png"] forState:UIControlStateNormal];
             [button.titleLabel setFont:[UIFont boldSystemFontOfSize:24]];
@@ -151,7 +151,7 @@
         group.animations        = @[animation1, animation2];
         group.duration          = 1.5;
         group.fillMode          = kCAFillModeForwards;
-        group.beginTime         = CACurrentMediaTime() + 5.5;
+        group.beginTime         = CACurrentMediaTime() + 4;
         group.removedOnCompletion = NO;
         
         [layer addAnimation:group forKey:nil];

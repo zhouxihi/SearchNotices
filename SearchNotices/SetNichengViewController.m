@@ -48,16 +48,16 @@
     //设置背景颜色
     [self.view setBackgroundColor:BackColor];
     
-    //挡住TabBar黑框
-    UIView *view = ({
-    
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 49)];
-        view.backgroundColor = BackColor;
-        
-        view;
-    });
-    
-    [self.view addSubview:view];
+//    //挡住TabBar黑框
+//    UIView *view = ({
+//    
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 49)];
+//        view.backgroundColor = BackColor;
+//        
+//        view;
+//    });
+//    
+//    [self.view addSubview:view];
     
     //创建显示昵称textField
     self.textField = ({
@@ -68,7 +68,7 @@
         text.font               = [UIFont systemFontOfSize:14];
         text.delegate           = self;
         text.backgroundColor    = [UIColor whiteColor];
-        //text.layer.cornerRadius = 5;
+        text.layer.cornerRadius = 5;
         
         text;
     });
@@ -144,6 +144,7 @@
 - (void)changeNiCheng {
     
     LRLog(@"修改昵称");
+    self.btn.enabled         = NO;
     
     //检查昵称格式
     if ([self.textField.text isEqualToString:@""]) {
@@ -151,12 +152,14 @@
         LRLog(@"昵称不能为空");
         [SVProgressHUD showErrorWithStatus:@"昵称不能为空"];
         [SVProgressHUD dismissWithDelay:1];
+        self.btn.enabled = YES;
     }
     else if (![zx_SN checkNicheng:self.textField.text]) {
         
         LRLog(@"昵称不符合8位以内的汉字");
         [SVProgressHUD showErrorWithStatus:@"昵称需要为8位以内的汉字"];
         [SVProgressHUD dismissWithDelay:1];
+        self.btn.enabled = YES;
     } else {
         
         //开始修改
@@ -165,10 +168,12 @@
             
             [SVProgressHUD showSuccessWithStatus:@"修改成功"];
             [SVProgressHUD dismissWithDelay:1];
+            self.btn.enabled = YES;
         } Fail:^(NSString *errorCode) {
             
             [SVProgressHUD showErrorWithStatus:@"网络异常"];
             [SVProgressHUD dismissWithDelay:1];
+            self.btn.enabled = YES;
         }];
     }
 }

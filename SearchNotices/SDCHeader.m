@@ -21,7 +21,7 @@
         
         self.sdcycleView = ({
         
-            SDCycleScrollView *view = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120)];
+            SDCycleScrollView *view = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 4.5)];
             view.localizationImageNamesGroup = @[[UIImage imageNamed:@"quanguodaguaipingtai"],
                                                  [UIImage imageNamed:@"guaiangaofa"],
                                                  [UIImage imageNamed:@"gonggao"]];;

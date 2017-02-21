@@ -19,7 +19,10 @@
         self.imageView = ({
             
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:\
-                                CGRectMake(SCREEN_WIDTH / 30, 10, SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15, SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15)];
+                                CGRectMake(SCREEN_WIDTH / 30,
+                                           10,
+                                           SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15,
+                                           SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15)];
             
             imgView;
         });
@@ -28,7 +31,10 @@
         self.lable = ({
         
             UILabel *lable      = [[UILabel alloc] initWithFrame:\
-                        CGRectMake(SCREEN_WIDTH / 30, 10 + SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15, SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15, 25)];
+                        CGRectMake(SCREEN_WIDTH / 30,
+                                   10 + SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15,
+                                   SCREEN_WIDTH / 5 - SCREEN_WIDTH / 15,
+                                   25)];
             
             lable.textAlignment = NSTextAlignmentCenter;
             //lable.font          = [UIFont systemFontOfSize:10];

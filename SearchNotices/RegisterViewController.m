@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     [self setupData];
     [self setupView];
 }

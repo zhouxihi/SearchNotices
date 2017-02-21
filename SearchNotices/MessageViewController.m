@@ -157,6 +157,7 @@ static NSString * const MESSAGECELL = @"MessageCell";
                 
                 [self.myTableView.mj_footer endRefreshing];
                 [self.myTableView reloadData];
+        
             } else {
                 
                 [self.myTableView.mj_footer endRefreshingWithNoMoreData];
@@ -269,6 +270,8 @@ static NSString * const MESSAGECELL = @"MessageCell";
 #pragma mark - TableView Delegate Method
 //点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    
     MessageModel *model = [self.showModels objectAtIndex:indexPath.section];
     
     //反选

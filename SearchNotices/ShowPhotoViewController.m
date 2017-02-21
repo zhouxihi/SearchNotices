@@ -9,6 +9,7 @@
 #import "ShowPhotoViewController.h"
 #import "ShowPhotoDataSource.h"
 #import "ShowPhotoCollectionViewCell.h"
+#import "PhotoFlowLayout.h"
 
 static NSString * const PHOTOCELLIDENTIFIER = @"CellIdentiferPhoto";
 
@@ -51,10 +52,10 @@ static NSString * const PHOTOCELLIDENTIFIER = @"CellIdentiferPhoto";
     //创建CollectionView
     self.myCollectionView = ({
         
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        PhotoFlowLayout *layout = [[PhotoFlowLayout alloc] init];
         layout.itemSize                    = CGSizeMake(SCREEN_WIDTH - 80, SCREEN_HEIGHT - 60);
-        layout.minimumLineSpacing          = 40.;
-        layout.footerReferenceSize         = CGSizeMake(80, SCREEN_HEIGHT - 60);
+        //layout.minimumLineSpacing          = 0.;
+        //layout.footerReferenceSize         = CGSizeMake(80, SCREEN_HEIGHT - 60);
         [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
         
         UICollectionView *collection       = [[UICollectionView alloc] initWithFrame:\
@@ -80,5 +81,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

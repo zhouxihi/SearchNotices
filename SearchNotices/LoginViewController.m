@@ -155,6 +155,7 @@
         [btn setTitle:@"登录" forState:UIControlStateNormal];
         [btn setBackgroundColor:BlueBtnColor];
         [btn setTintColor:[UIColor whiteColor]];
+        
         [btn addTarget:self
                 action:@selector(loginAction)
       forControlEvents:UIControlEventTouchUpInside];
